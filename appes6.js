@@ -100,16 +100,15 @@ document.querySelector('#book-form').addEventListener('submit', function (e) {
     if (title === '' || author === '' || isbn === '') {
         // Error alert
         ui.showAlert('Please fill in all fields', 'error');
-        return;
+    }else{
+        // Add book to list
+        ui.addBookToList(book);
+        // Add book to local storage
+        Store.addBook(book);
+        ui.showAlert('Book added!', 'success');
+        //clear fields
+        ui.clearFields();
     }
-
-    // Add book to list
-    ui.addBookToList(book);
-    // Add book to local storage
-    Store.addBook(book);
-    ui.showAlert('Book added!', 'success');
-    //clear fields
-    ui.clearFields();
     e.preventDefault();
 })
 
